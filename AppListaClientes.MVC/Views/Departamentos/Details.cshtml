@@ -1,0 +1,66 @@
+﻿@model AppListaClientes.MVC.Models.tblDepartamentos
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tblDepartamentos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CodigoDepartamento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodigoDepartamento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NombreDepartamento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NombreDepartamento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaCreacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaCreacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UsuarioCreacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UsuarioCreacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaUltimaModificacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaUltimaModificacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UsuarioUltimaModificacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UsuarioUltimaModificacion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IDDepartamento }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

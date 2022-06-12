@@ -1,0 +1,85 @@
+﻿@using AppListaClientes.MVC.Models
+
+@{
+    ViewBag.Title = "Lista Clientes";
+}
+
+<h2 class="text-dark">@ViewBag.Title</h2>
+
+
+@{ List<usp_Clientes_Obtener_Result> clientes = (List<usp_Clientes_Obtener_Result>)ViewBag.clientes;}
+
+<div>
+    <a href="@Url.Action("NuevoCliente", "Clientes")" class="btn btn-primary mt-2 text-white">Crear Nuevo</a>
+</div>
+
+<div class="container-fluid mt-3">
+    <div class="card mb-3">
+        <div class="card-header badge-dark">
+            <i class="fa fa-table"></i> Tabla Clientes
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead class="badge-dark text-center">
+                        <tr>
+                            <th>ID</th>
+                            <th>Nit</th>
+                            <th>Nombre</th>
+                            <th>Teléfono</th>
+                            <th>Dirección</th>
+                            <th>Ciudad</th>
+                            <th>Correo Electrónico</th>
+                            @*<th>Fecha Creación</th>*@
+                            <th>Opciones</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var e in clientes)
+                        {
+                            <tr class="bg-white text-center text-dark">
+                                <td>@e.IDCliente</td>
+                                <td>@e.NitCliente</td>
+                                <td>@e.PrimerNombre @e.SegundoNombre  @e.PrimerApellido @e.SegundoApellido</td>
+                                <td>@e.Telefono</td>
+                                <td>@e.Direccion</td>
+                                <td>@e.NombreCiudad</td>
+                                <td>@e.Correo</td>
+                                @*<td>@e.dtmFechaCreacion</td>*@
+                                <td>
+                                    <a href="@Url.Action("Editar", "Clientes", new { IDCliente = e.IDCliente })">
+                                        <i class="fa fa-fw fa-edit fa-lg"></i>
+                                    </a>|
+                                    <a onclick="javascript: borrarRegistro(@e.IDCliente);">
+                                        <i class="fa fa-trash fa-lg"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    function borrarRegistro(IDCliente) {
+
+        fetch(`/Clientes/Eliminar`, {
+            method: 'POST', // GET or 'PUT'
+            body: JSON.stringify({ IDCliente }), // data can be `string` or {object}!
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then((data) => {
+            Swal.fire(
+                'Eliminar',
+                'El registro fue eliminado con éxito!',
+                'success'
+            ).then(() => location.reload())
+        })
+    }
+</script>

@@ -1,0 +1,68 @@
+﻿@model IEnumerable<AppListaClientes.MVC.Models.tblDepartamentos>
+
+
+@{
+    ViewBag.Title = "Departamentos";
+}
+
+<h2>Lista Departamentos</h2>
+
+<div>
+    <a href="@Url.Action("Create", "Departamentos")" class="btn btn-primary mt-2 text-white">Crear Nuevo</a>
+</div>
+
+<div class="container-fluid mt-3">
+        <div class="card mb-3">
+            <div class="card-header badge-dark">
+                <i class="fa fa-table"></i> Tabla Departamentos
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead class="badge-dark text-center">
+                            <tr>
+                                <th>ID</th>
+                                <th>Codigo</th>
+                                <th>Departamento</th>
+                                <th>Fecha Creacción</th>
+                                <th>Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr class="text-center">
+                                    <th>
+                                        @Html.DisplayFor(model => item.IDDepartamento)
+                                    </th>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CodigoDepartamento)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.NombreDepartamento)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.FechaCreacion)
+                                    </td>
+                                    <td>
+                                        <a href="@Url.Action("Edit", "Departamentos", new { id = item.IDDepartamento })">
+                                            <i class="fa fa-fw fa-edit fa-lg"></i>
+                                        </a>|
+                                        <a href="@Url.Action("Details", "Departamentos", new { id = item.IDDepartamento })">
+                                            <i class="fa fa-book fa-lg"></i>
+                                        </a>|
+                                        <a href="@Url.Action("Delete", "Departamentos", new { id = item.IDDepartamento })">
+                                            <i class="fa fa-trash fa-lg"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+

@@ -1,0 +1,85 @@
+﻿@model AppListaClientes.MVC.Models.ViewModels.Cliente
+
+@{
+    ViewBag.Title = "Crear Cliente";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("NuevoCliente", "Clientes", FormMethod.Post))
+{@Html.AntiForgeryToken()
+
+<div class="container">
+    <form class="card-body" asp-action="NuevoCliente">
+        <div class="row">
+
+            <div class="form-group col-lg-6  mt-lg-2">
+                @Html.LabelFor(c => c.NitCliente)<span> *</span>
+                @Html.TextBoxFor(c => c.NitCliente, "", new { @class = "form-control bg-white" })
+                @Html.ValidationMessageFor(c => c.NitCliente, null, new { @class = "label label-danger text-danger" })
+            </div>
+
+            <div class="form-group col-lg-6  mt-lg-2">
+                @Html.LabelFor(c => c.PrimerNombre)<span> *</span>
+                @Html.TextBoxFor(c => c.PrimerNombre, "", new { @class = "form-control bg-white" })
+                @Html.ValidationMessageFor(c => c.PrimerNombre, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-lg-6">
+                @Html.LabelFor(c => c.SegundoNombre)
+                @Html.TextBoxFor(c => c.SegundoNombre, "", new { @class = "form-control bg-white" })
+                @Html.ValidationMessageFor(c => c.SegundoNombre, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-lg-6">
+                @Html.LabelFor(c => c.PrimerApellido)<span> *</span>
+                @Html.TextBoxFor(c => c.PrimerApellido, "", new { @class = "form-control bg-white" })
+                @Html.ValidationMessageFor(c => c.PrimerApellido, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-lg-6">
+                @Html.LabelFor(c => c.SegundoApellido)
+                @Html.TextBoxFor(c => c.SegundoApellido, "", new { @class = "form-control bg-white" })
+                @Html.ValidationMessageFor(c => c.SegundoApellido, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-lg-6">
+                @Html.LabelFor(c => c.Telefono, "Teléfono")<span> *</span>
+                @Html.TextBoxFor(c => c.Telefono, "", new { @class = "form-control bg-white" })
+                @Html.ValidationMessageFor(c => c.Telefono, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-lg-6">
+                @Html.LabelFor(c => c.Direccion, "Dirección")<span> *</span>
+                @Html.TextBoxFor(c => c.Direccion, "", new { @class = "form-control bg-white" })
+                @Html.ValidationMessageFor(c => c.Direccion, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-lg-6">
+                @Html.LabelFor(p => p.IDCiudad, "Ciudad")<span> *</span>
+                @Html.DropDownListFor(p => p.IDCiudad, new SelectList(ViewBag.ciudades, "IDCiudad", "NombreCiudad"), htmlAttributes: new { @class = "form-control bg-white" })
+                @*@Html.ValidationMessageFor(c => c.IDCiudad, "", new { @class = "text-danger" })*@
+            </div>
+            <div class="form-group col-lg-6">
+                @Html.LabelFor(c => c.Correo)<span> *</span>
+                @Html.TextBoxFor(c => c.Correo, "", new { @class = "form-control bg-white", @id = "Correo" })
+                @Html.ValidationMessageFor(c => c.Correo, "", new { @class = "validation-message text-danger", dir = "ltr" })
+            </div>
+        </div>
+        <div class="form-footer">
+            <a href="@Url.Action("Obtener", "Clientes")" class="btn btn-secondary">Volver</a>
+            <input type="submit" value="Guardar" class="btn btn-primary text-white" />
+
+        </div>
+    </form>
+</div>
+
+
+
+}
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('#Correo').attr('required', true);
+        $('#Correo').attr('type', 'email');
+    }
+
+</script>
+
+
+

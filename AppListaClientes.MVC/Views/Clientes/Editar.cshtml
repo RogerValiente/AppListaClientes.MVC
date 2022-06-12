@@ -1,0 +1,84 @@
+﻿@model AppListaClientes.MVC.Models.usp_Clientes_Consultar_Result
+
+@{
+    ViewBag.Title = "Editar Cliente";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("NuevoCliente", "Clientes", FormMethod.Post))
+{@Html.AntiForgeryToken()
+    <div class="container">
+        <div class="row">
+            <form class="card-body" asp-action="NuevoCliente">
+                @Html.HiddenFor(model => model.IDCliente)
+                <div class="col-lg-6 mt-lg-2">
+                    @Html.LabelFor(c => c.NitCliente, "Nit")<span> *</span>
+                    @Html.TextBoxFor(c => c.NitCliente, "", new { @class = "form-control bg-white" })
+                    @Html.ValidationMessageFor(c => c.NitCliente, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group col-lg-6  mt-lg-2">
+                    @Html.LabelFor(c => c.PrimerNombre, "Primer Nombre")<span> *</span>
+                    @Html.TextBoxFor(c => c.PrimerNombre, "", new { @class = "form-control bg-white" })
+                    @Html.ValidationMessageFor(c => c.PrimerNombre, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group col-lg-6">
+                    @Html.LabelFor(c => c.SegundoNombre, "Segundo Nombre")
+                    @Html.TextBoxFor(c => c.SegundoNombre, "", new { @class = "form-control bg-white" })
+                    @Html.ValidationMessageFor(c => c.SegundoNombre, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group col-lg-6">
+                    @Html.LabelFor(c => c.PrimerApellido, "Primer Apellido")<span> *</span>
+                    @Html.TextBoxFor(c => c.PrimerApellido, "", new { @class = "form-control bg-white" })
+                    @Html.ValidationMessageFor(c => c.PrimerApellido, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group col-lg-6">
+                    @Html.LabelFor(c => c.SegundoApellido, "Segundo Apellido")
+                    @Html.TextBoxFor(c => c.SegundoApellido, "", new { @class = "form-control bg-white" })
+                    @Html.ValidationMessageFor(c => c.SegundoApellido, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group col-lg-6">
+                    @Html.LabelFor(c => c.Telefono, "Teléfono")<span> *</span>
+                    @Html.TextBoxFor(c => c.Telefono, "", new { @class = "form-control bg-white" })
+                    @Html.ValidationMessageFor(c => c.Telefono, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group col-lg-6">
+                    @Html.LabelFor(c => c.Direccion, "Dirección")<span> *</span>
+                    @Html.TextBoxFor(c => c.Direccion, "", new { @class = "form-control bg-white" })
+                    @Html.ValidationMessageFor(c => c.Direccion, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group col-lg-6">
+                    @Html.LabelFor(p => p.IDCiudad, "Ciudad")<span> *</span>
+                    @Html.DropDownListFor(p => p.IDCiudad, new SelectList(ViewBag.ciudades, "IDCiudad", "NombreCiudad"), htmlAttributes: new { @class = "form-control bg-white" })
+                    @Html.ValidationMessageFor(c => c.IDCiudad, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group col-lg-6">
+                    @Html.LabelFor(c => c.Correo)
+                    @Html.TextBoxFor(c => c.Correo, "", new { @class = "form-control bg-white", @id = "Correo" })
+                    @Html.ValidationMessageFor(c => c.Correo, "", new { @class = "validation-message text-danger", dir = "ltr" })
+                </div>
+            </form>
+        </div>
+        <div class="form-footer">
+            <a href="@Url.Action("Obtener", "Clientes")" class="btn btn-secondary">Volver</a>
+            <input type="submit" value="Guardar" class="btn btn-primary text-white" />
+        </div>
+    </div>
+
+}
+
+<script type="javascript">
+
+    $(document).ready(function () {
+        $('#Correo').attr('required', true);
+        $('#Correo').attr('type', 'email');
+    }
+</script>
+
+
+
+
+
+
+

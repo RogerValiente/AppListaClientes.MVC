@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+
+    @Styles.Render("~/Content/css")
+    @*@Scripts.Render("~/bundles/modernizr")*@
+
+</head>
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+        <a class="navbar-brand" href="@Url.Action("Obtener", "Clientes")">App Lista Cliente</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Clientes">
+                    <a class="nav-link" href="@Url.Action("Obtener", "Clientes")">
+                        <i class="fa fa-fw fa-table"></i>
+                        <span class="nav-link-text">Clientes</span>
+                    </a>
+                </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Ciudades">
+                    <a class="nav-link" href="@Url.Action("Index", "Ciudades")">
+                        <i class="fa fa-fw fa-table"></i>
+                        <span class="nav-link-text">Ciudades</span>
+                    </a>
+                </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Departamentos">
+                    <a class="nav-link" href="@Url.Action("Index", "Departamentos")">
+                        <i class="fa fa-fw fa-table"></i>
+                        <span class="nav-link-text">Departamentos</span>
+                    </a>
+                </li>
+            </ul>
+            @*<ul class="navbar-nav sidenav-toggler">
+                    <li class="nav-item">
+                        <a class="nav-link text-center" id="sidenavToggler">
+                            <i class="fa fa-fw fa-angle-left"></i>
+                        </a>
+                    </li>
+                </ul>*@
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <form class="form-inline my-2 my-lg-0 mr-lg-2">
+                        <div class="input-group">
+                            <input class="form-control" type="text" placeholder="Search for...">
+                            <span class="input-group-append">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </form>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+                        <i class="fa fa-fw fa-sign-out"></i>Logout
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="content-wrapper">
+
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+
+        </div>
+
+        <footer class="sticky-footer ">
+            <div class="container">
+                <div class="text-center">
+                    <small>Copyright © Your Website 2022</small>
+                </div>
+            </div>
+        </footer>
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fa fa-angle-up"></i>
+        </a>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+
+        <!-- Toggle between fixed and static navbar-->
+        <script>
+            $('#toggleNavPosition').click(function () {
+                $('body').toggleClass('fixed-nav');
+                $('nav').toggleClass('fixed-top static-top');
+            });
+
+        </script>
+        <!-- Toggle between dark and light navbar-->
+        <script>
+            $('#toggleNavColor').click(function () {
+                $('nav').toggleClass('navbar-dark navbar-light');
+                $('nav').toggleClass('bg-dark bg-light');
+                $('body').toggleClass('bg-dark bg-light');
+            });
+
+        </script>
+    </div>
+</body>
+</html>

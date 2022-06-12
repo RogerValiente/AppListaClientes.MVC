@@ -1,0 +1,74 @@
+﻿@model AppListaClientes.MVC.Models.tblCiudades
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tblCiudades</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CodigoCiudad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodigoCiudad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NombreCiudad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NombreCiudad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaCreacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaCreacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UsuarioCreacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UsuarioCreacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaUltimaModificacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaUltimaModificacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UsuarioUltimaModificacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UsuarioUltimaModificacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblDepartamentos.NombreDepartamento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblDepartamentos.NombreDepartamento)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IDCiudad }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
